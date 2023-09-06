@@ -1,0 +1,21 @@
+{
+  "name": "easy-pair-with-target-sum",
+  "version": "1.0.0",
+  "description": "the solution from educative.io so i can run a debugger and step through the solutions",
+  "main": "index.js",
+  "dependencies": {
+    "@types/node": "^16.4.0",
+    "collections": "^5.1.12",
+    "node-fetch": "^3.2.10",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5"
+  },
+  "devDependencies": {
+    "@types/collections": "^5.1.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
