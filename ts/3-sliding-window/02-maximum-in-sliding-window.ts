@@ -1,6 +1,6 @@
 import { Deque } from "./utils";
 // copied from solution
-// was misdirected by their adding a heap to coding area
+// was misdirected by how they added a heap to coding area
 
 function cleanUp(i, currentWindow, nums) {
   // remove all the indexes from currentWindow whose corresponding values are smaller than or equal to the current element

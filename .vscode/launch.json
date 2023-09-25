@@ -6,7 +6,7 @@
       "type": "node",
       "request": "launch",
       "args": ["${relativeFile}"],
-      "runtimeArgs": ["-r", "ts-node/register"],
+      "runtimeArgs": ["-r", "ts-node/register/transpile-only"],
       "cwd": "${workspaceRoot}",
       "internalConsoleOptions": "openOnSessionStart",
       "resolveSourceMapLocations": [
