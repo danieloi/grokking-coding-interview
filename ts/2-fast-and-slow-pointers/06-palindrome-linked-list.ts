@@ -1,37 +1,52 @@
 import { LinkedListNode, reverseLinkedList, LinkedList } from "./linked-list";
 
-export function palindrome(head: LinkedListNode | null) {
-  // Replace this placeholder return statement with your code
+// Check palindrome in linkedList
+function palindrome(head: LinkedListNode | null) {
+  // Initialize slow and fast pointers to the head of the linked list
+  var fast: LinkedListNode | null, slow: LinkedListNode | null;
+  slow = head;
+  fast = head;
 
-  // find the middle of the linked list
-  let slowPointer: LinkedListNode | null = head;
-  let fastPointer: LinkedListNode | null = head;
-  while (fastPointer != null && fastPointer.next != null) {
-    slowPointer = slowPointer!.next!;
-    fastPointer = fastPointer.next.next;
+  // Find the middle of the linked list using the slow and fast pointers
+  while (fast && fast.next) {
+    // move slow one step forward
+    slow = slow!.next;
+    // move fast two steps forward
+    fast = fast.next.next;
   }
 
-  // reverse the second half of the linked list
-  let headSecondHalf = reverseLinkedList(slowPointer);
-  let copyHeadSecondHalf = headSecondHalf;
+  // Reverse the second half of the linked list starting from the middle node
+  const reversedData = reverseLinkedList(slow);
 
-  // compare the first and the second half
-  while (head != null && headSecondHalf != null) {
-    if (head.data !== headSecondHalf.data) {
-      break; // not a palindrome
-    }
-    head = head.next;
-    headSecondHalf = headSecondHalf.next;
-  }
+  // Compare the first half of the linked list with the reversed second half of the linked list
 
-  reverseLinkedList(copyHeadSecondHalf); // revert the reverse of the second half
+  var check = compareTwoHalves(head, reversedData);
 
-  if (head == null || headSecondHalf == null) {
-    // if both halves match
+  // Re-reverse the second half of the linked list to restore the original linked list
+  reverseLinkedList(reversedData);
+
+  // Return True if the linked list is a palindrome, else False
+  if (check) {
     return true;
   }
 
   return false;
+}
+
+function compareTwoHalves(
+  firstHalf: LinkedListNode | null,
+  secondHalf: LinkedListNode | null
+) {
+  // Compare the corresponding nodes of the first and second halves of the linked list
+  while (firstHalf !== null && secondHalf !== null) {
+    if (firstHalf.data !== secondHalf.data) {
+      return false;
+    } else {
+      firstHalf = firstHalf.next;
+      secondHalf = secondHalf.next;
+    }
+  }
+  return true;
 }
 
 // Test
