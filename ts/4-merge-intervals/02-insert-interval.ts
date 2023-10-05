@@ -1,6 +1,9 @@
 import { Interval, display } from "./utils";
 
-function insertInterval(existingIntervals: Interval[], newInterval: Interval) {
+function insertInterval(
+  existingIntervals: Interval[],
+  newInterval: Interval
+) {
   // just so I can use the display function in watch expressions
   const show = display;
   // Read the starting and ending time of the new interval,
@@ -8,14 +11,16 @@ function insertInterval(existingIntervals: Interval[], newInterval: Interval) {
   let newStart = newInterval.start,
     newEnd = newInterval.end;
 
-  // Initialize variables to help in iterating over the existing intervals list
+  // Initialize variables to help in iterating over the
+  // existing intervals list
   let i = 0,
     n = existingIntervals.length;
 
   // Initialize an empty list to store the output
   let output: Interval[] = [];
 
-  // Append all intervals that start before the new interval to the output list
+  // Append all intervals that start before the new interval to
+  // the output list
   while (i < n && newStart > existingIntervals[i].start) {
     output.push(existingIntervals[i]);
     i = i + 1;
@@ -76,10 +81,16 @@ function main() {
 
   for (let i = 0; i < newIntervals.length; i++) {
     console.log(
-      i + 1 + ".\tExisting intervals: " + display(existingIntervals[i])
+      i +
+        1 +
+        ".\tExisting intervals: " +
+        display(existingIntervals[i])
     );
     console.log("\tNew interval: ", newIntervals[i].formatInterval());
-    const output = insertInterval(existingIntervals[i], newIntervals[i]);
+    const output = insertInterval(
+      existingIntervals[i],
+      newIntervals[i]
+    );
     console.log("\tUpdated intervals: " + display(output));
     console.log("-".repeat(100));
   }

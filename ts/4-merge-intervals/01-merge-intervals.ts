@@ -45,7 +45,11 @@ function intervalListToStr(list) {
 }
 
 function main() {
-  let v1 = [new Interval(1, 5), new Interval(3, 7), new Interval(4, 6)],
+  let v1 = [
+      new Interval(1, 5),
+      new Interval(3, 7),
+      new Interval(4, 6),
+    ],
     v2 = [
       new Interval(1, 5),
       new Interval(4, 6),
@@ -63,7 +67,11 @@ function main() {
     v7 = [new Interval(1, 2), new Interval(3, 4), new Interval(8, 8)],
     v8 = [new Interval(1, 5), new Interval(1, 3)],
     v9 = [new Interval(1, 5), new Interval(6, 9)],
-    v10 = [new Interval(0, 0), new Interval(1, 18), new Interval(1, 3)];
+    v10 = [
+      new Interval(0, 0),
+      new Interval(1, 18),
+      new Interval(1, 3),
+    ];
 
   let allIntervals = [v1, v2, v3, v4, v6, v7, v8, v9, v10];
 
