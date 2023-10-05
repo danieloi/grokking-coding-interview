@@ -21,4 +21,18 @@ class Interval {
   }
 }
 
-export { Interval };
+function display(vec: Interval[]) {
+  let string = "[";
+  if (vec.length > 0) {
+    for (let i = 0; i < vec.length; i++) {
+      string += vec[i].formatInterval();
+      if (i + 1 < vec.length) {
+        string += ", ";
+      }
+    }
+  }
+  string += "]";
+  return string;
+}
+
+export { Interval, display };
