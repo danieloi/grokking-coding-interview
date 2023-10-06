@@ -1,4 +1,9 @@
 {
   "compile-hero.disable-compile-files-on-did-save-code": true,
-  "rewrap.wrappingColumn": 60
+  "rewrap.wrappingColumn": 60,
+  "workbench.activityBar.visible": false,
+  "workbench.statusBar.visible": false,
+  "editor.lineNumbers": "off",
+  "gitlens.currentLine.enabled": false,
+  "scm.diffDecorations": "none"
 }
