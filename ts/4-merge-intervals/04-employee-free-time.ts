@@ -14,7 +14,8 @@ function employeeFreeTime(schedule: Interval[][]) {
   // Take an empty array to store results.
   const result: Interval[] = [];
 
-  // Set 'previous' to the start time of the first interval in the heap.
+  // Set 'previous' to the start time of the first interval in
+  // the heap.
   const [
     firstIntervalStart,
     firstIntervalEmployeeIdx,
@@ -33,13 +34,15 @@ function employeeFreeTime(schedule: Interval[][]) {
 
     // If the selected interval's start value is greater than the
     // previous value, it means that this interval is free.
-    // So, add this interval (previous, interval's end value) to the result.
+    // So, add this interval (previous, interval's end value)
+    // to the result.
     if (interval.start > previous) {
       const freeInterval = new Interval(previous, interval.start);
       result.push(freeInterval);
     }
 
-    // Update the previous as the maximum of previous and interval's end value.
+    // Update the previous as the maximum of previous and interval's
+    // end value.
     previous = Math.max(previous, interval.end);
 
     // If there is another interval in the current employee's schedule,
