@@ -94,6 +94,28 @@ export function reverseLinkedList(head: LinkedListNode | null) {
   return prev;
 }
 
+export function reverseLinkedListKNodes(
+  head: LinkedListNode | null,
+  k: number
+) {
+  let previous: LinkedListNode | null = null;
+  let current = head;
+  let next: LinkedListNode | null = null;
+
+  for (let i = 0; i < k; i++) {
+    // temporarily store the next node
+    next = current!.next;
+    // reverse the current node
+    current!.next = previous;
+    // before we move to the next node, point previous to the current node
+    previous = current;
+    // move to the next node
+    current = next;
+  }
+
+  return [previous, current];
+}
+
 // Template for traversing a linked list
 
 export function traverseLinkedList(head: LinkedListNode | null) {
