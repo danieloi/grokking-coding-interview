@@ -141,3 +141,11 @@ export function printListWithForwardArrow(linkedListNode) {
   }
   return result;
 }
+
+// Template for swapping two nodes of the linked list
+
+export function swap(node1: LinkedListNode, node2: LinkedListNode) {
+  let temp = node1.data;
+  node1.data = node2.data;
+  node2.data = temp;
+}
