@@ -1,6 +1,11 @@
 import { MaxHeap, MinHeap } from "./utils";
 
-function maximumCapital(c, k, capitals, profits) {
+function maximumCapital(
+  c: number,
+  k: number,
+  capitals: number[],
+  profits: number[]
+) {
   let currentCapital = c;
   let capitalsMinHeap = new MinHeap();
   let profitsMaxHeap = new MaxHeap();
@@ -30,7 +35,8 @@ function maximumCapital(c, k, capitals, profits) {
       break;
     }
 
-    // Select those projects from max-heap that contain maximum profit
+    // Select those projects from max-heap that
+    // contain maximum profit
     let element = profitsMaxHeap.pop();
     let j = element[0];
     console.log("\t\tUpdated capital =", currentCapital, "+", j);
@@ -41,7 +47,7 @@ function maximumCapital(c, k, capitals, profits) {
 }
 
 function main() {
-  const input = [
+  const input: [number, number, number[], number[]][] = [
     [0, 1, [1, 1, 2], [1, 2, 3]],
     [1, 2, [1, 2, 2, 3], [2, 4, 6, 8]],
     [2, 3, [1, 3, 4, 5, 6], [1, 2, 3, 4, 5]],
