@@ -213,3 +213,21 @@ export class MinHeap {
     return this.data.length;
   }
 }
+
+export function printList(lst: number[]) {
+  let output = "[";
+  var i = 0;
+  for (i = 0; i < lst.length - 1; i++) {
+    output += lst[i] + ", ";
+  }
+  output += lst[i] + "]";
+  return output;
+}
+
+export function printDecimalNum(num: number) {
+  const temp = num.toString();
+  const output = temp.includes(".")
+    ? num
+    : num.toPrecision(temp.length + 1);
+  return output;
+}
