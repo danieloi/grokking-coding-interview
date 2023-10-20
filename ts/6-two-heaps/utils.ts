@@ -106,8 +106,8 @@ export class MaxHeap {
   }
 }
 
-export class MinHeap {
-  data: any[];
+export class MinHeap<T = any> {
+  data: T[];
   compareVal: (a: any, b: any) => number;
   constructor(data = new Array()) {
     this.data = data;
@@ -143,7 +143,7 @@ export class MinHeap {
     const result = this.data[0];
     const last = this.data.pop();
     if (this.size() !== 0) {
-      this.data[0] = last;
+      this.data[0] = last as T;
       this.percolateDown(0);
     }
     return result;
@@ -229,5 +229,15 @@ export function printDecimalNum(num: number) {
   const output = temp.includes(".")
     ? num
     : num.toPrecision(temp.length + 1);
+  return output;
+}
+
+export function printListWithFloats(lst: number[]) {
+  let output = "[";
+  var i = 0;
+  for (i = 0; i < lst.length - 1; i++) {
+    output += printDecimalNum(lst[i]) + ", ";
+  }
+  output += printDecimalNum(lst[i]) + "]";
   return output;
 }
