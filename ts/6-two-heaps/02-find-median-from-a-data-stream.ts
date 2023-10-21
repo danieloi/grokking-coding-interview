@@ -5,7 +5,7 @@ import {
   printList,
 } from "./utils";
 
-class medianOfStream {
+class MedianOfStream {
   maxHeapForSmallNum: MaxHeap;
   minHeapForLargeNum: MinHeap;
   constructor() {
@@ -13,7 +13,7 @@ class medianOfStream {
     this.minHeapForLargeNum = new MinHeap();
   }
 
-  insertNum(num) {
+  insertNum(num: number) {
     if (
       this.maxHeapForSmallNum.size() == 0 ||
       -1 * this.maxHeapForSmallNum.peek() >= num
@@ -43,11 +43,13 @@ class medianOfStream {
     if (
       this.maxHeapForSmallNum.size() == this.minHeapForLargeNum.size()
     ) {
-      // we have even number of elements, take the average of middle two elements
+      // we have even number of elements,
+      // take the average of middle two elements
       return (
         (-1 * this.maxHeapForSmallNum.peek()) / 2.0 +
         this.minHeapForLargeNum.peek() / 2.0
-      ); // we divide both numbers by 2.0 to ensure we add two floating point numbers
+      ); // we divide both numbers by 2.0 to ensure
+      // we add two floating point numbers
     }
 
     // because max-heap will have one more element than the min-heap
@@ -57,7 +59,7 @@ class medianOfStream {
 
 // Driver code
 function main() {
-  var medianNum = new medianOfStream();
+  var medianNum = new MedianOfStream();
   var nums = [35, 22, 30, 25, 1];
   var numlist: number[] = [];
   for (var i = 0; i < nums.length; i++) {
