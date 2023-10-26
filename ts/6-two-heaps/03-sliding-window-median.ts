@@ -4,7 +4,8 @@ function medianSlidingWindow(nums: number[], k: number) {
   // To store the medians
   let medians: number[] = [];
 
-  // To keep track of the numbers that need to be removed from the heaps
+  // To keep track of the numbers that need to be removed
+  // from the heaps
   let outgoingNum = {};
 
   // Max heap
@@ -14,12 +15,15 @@ function medianSlidingWindow(nums: number[], k: number) {
   let largeList = new MinHeap<number>();
 
   // Initialize the max heap by multiplying each element by -1
-  for (let i = 0; i < k; i++) smallList.push(-1 * nums[i]);
+  for (let i = 0; i < k; i++) {
+    smallList.push(-1 * nums[i]);
+  }
 
   // Transfer the top 50% of the numbers from max heap to min heap
   // while restoring the sign of each number
-  for (let i = 0; i < Math.floor(k / 2); i++)
+  for (let i = 0; i < Math.floor(k / 2); i++) {
     largeList.push(-1 * smallList.pop()!);
+  }
 
   // Variable to keep the heaps balanced
   let balance = 0;
@@ -52,7 +56,8 @@ function medianSlidingWindow(nums: number[], k: number) {
       outgoingNum[outNum] = outgoingNum[outNum] + 1;
     else outgoingNum[outNum] = 1;
 
-    // If the incoming number is less than the top of the max heap, add it in that heap
+    // If the incoming number is less than the
+    // top of the max heap, add it in that heap
     // Otherwise, add it in the min heap
     if (smallList.size() > 0 && inNum <= smallList.peek()! * -1) {
       balance += 1;
@@ -66,11 +71,16 @@ function medianSlidingWindow(nums: number[], k: number) {
     if (balance < 0) smallList.push(-1 * largeList.pop()!);
     else if (balance > 0) largeList.push(-1 * smallList.pop()!);
 
-    // Since the heaps have been balanced, we reset the balance variable to 0.
-    // This ensures that the two heaps contain the correct elements for the calculations to be performed on the elements in the next window.
+    // Since the heaps have been balanced, we reset the
+    // balance variable to 0.
+    // This ensures that the two heaps contain the
+    // correct elements for
+    // the calculations to be performed on the elements in
+    // the next window.
     balance = 0;
 
-    // Remove invalid numbers present in the hash map from top of max heap
+    // Remove invalid numbers present in the hash map
+    // from top of max heap
     while (
       smallList.peek()! * -1 in outgoingNum &&
       outgoingNum[smallList.peek()! * -1] > 0
@@ -78,7 +88,8 @@ function medianSlidingWindow(nums: number[], k: number) {
       outgoingNum[smallList.peek()! * -1] =
         outgoingNum[smallList.pop()! * -1] - 1;
 
-    // Remove invalid numbers present in the hash map from top of min heap
+    // Remove invalid numbers present in the
+    // hash map from top of min heap
     while (
       largeList.size() > 0 &&
       largeList.peek()! in outgoingNum &&
