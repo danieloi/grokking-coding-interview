@@ -1,13 +1,11 @@
 import { MinHeap } from "./utils";
 
 function kSmallestNumber(lists: number[][], k: number) {
-  // for a loop later
-  let listLength = lists.length,
-    // declaring a min-heap to keep track of
-    //smallest elements
-    minHeapforKSmallest = new MinHeap();
+  // declaring a min-heap to keep track of
+  // smallest elements
+  const minHeapforKSmallest = new MinHeap();
 
-  for (let index = 0; index < listLength; index++) {
+  for (let index = 0; index < lists.length; index++) {
     // if there are no elements in the input lists,
     // return []
     if (lists[index].length == 0) {
@@ -16,7 +14,7 @@ function kSmallestNumber(lists: number[][], k: number) {
 
     // place the first element of each list in
     // the minHeap
-    else minHeapforKSmallest.push([lists[index][0], index, 0]);
+    minHeapforKSmallest.push([lists[index][0], index, 0]);
   }
 
   // if our kth element equals to numbersChecked,
