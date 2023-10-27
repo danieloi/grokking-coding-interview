@@ -7,5 +7,5 @@
   "editor.fontSize": 40,
   "gitlens.currentLine.enabled": false,
   "scm.diffDecorations": "none",
-  "window.zoomLevel": 4
+  "window.zoomLevel": 0
 }
