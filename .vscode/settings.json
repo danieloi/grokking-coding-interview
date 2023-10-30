@@ -4,8 +4,8 @@
   "workbench.activityBar.visible": false,
   "workbench.statusBar.visible": false,
   "editor.lineNumbers": "off",
-  "editor.fontSize": 40,
+  "editor.fontSize": 18,
   "gitlens.currentLine.enabled": false,
   "scm.diffDecorations": "none",
-  "window.zoomLevel": 0
+  "window.zoomLevel": 2
 }
