@@ -2,10 +2,10 @@
   "compile-hero.disable-compile-files-on-did-save-code": true,
   "rewrap.wrappingColumn": 60,
   "workbench.activityBar.visible": false,
-  "workbench.statusBar.visible": false,
+  "workbench.statusBar.visible": true,
   "editor.lineNumbers": "off",
-  "editor.fontSize": 18,
+  "editor.fontSize": 36,
   "gitlens.currentLine.enabled": false,
   "scm.diffDecorations": "none",
-  "window.zoomLevel": 2
+  "window.zoomLevel": 0
 }
