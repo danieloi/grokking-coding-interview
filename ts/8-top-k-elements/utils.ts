@@ -214,7 +214,126 @@ export class MinHeap<T = any> {
   }
 }
 
-export function printList(lst: number[]) {
+// heap property by lexigraphical order
+
+export class LexMinHeap<T = any> {
+  data: T[];
+  compareVal: (a: any, b: any) => boolean;
+  constructor(data = new Array()) {
+    this.data = data;
+    this.compareVal = (a, b) => {
+      // compare the frequency first
+      if (a[0] === b[0]) {
+        // if the frequency is same, compare the words
+        return a[1] > b[1];
+      }
+      // if the frequency is different, compare the
+      // frequency
+      return a[0] < b[0];
+    };
+    this.heapify();
+  }
+
+  heapify() {
+    if (this.size() < 2) {
+      return;
+    }
+    for (let i = 1; i < this.size(); i++) {
+      this.percolateUp(i);
+    }
+  }
+
+  peek() {
+    if (this.size() === 0) {
+      return null;
+    }
+    return this.data[0];
+  }
+
+  push(value) {
+    this.data.push(value);
+    this.percolateUp(this.size() - 1);
+  }
+
+  pop() {
+    if (this.size() === 0) {
+      return null;
+    }
+    const result = this.data[0];
+    const last = this.data.pop();
+    if (this.size() !== 0) {
+      this.data[0] = last as T;
+      this.percolateDown(0);
+    }
+    return result;
+  }
+
+  percolateUp(index) {
+    while (index > 0) {
+      const parentIndex = (index - 1) >> 1;
+      if (
+        this.compareVal(
+          this.data[index],
+          this.data[parentIndex]
+        )
+      ) {
+        this.swap(index, parentIndex);
+        index = parentIndex;
+      } else {
+        break;
+      }
+    }
+  }
+
+  percolateDown(index) {
+    const lastIndex = this.size() - 1;
+    while (true) {
+      const leftIndex = index * 2 + 1;
+      const rightIndex = index * 2 + 2;
+      let findIndex = index;
+
+      if (
+        leftIndex <= lastIndex &&
+        this.compareVal(
+          this.data[leftIndex],
+          this.data[findIndex]
+        )
+      ) {
+        findIndex = leftIndex;
+      }
+
+      if (
+        rightIndex <= lastIndex &&
+        this.compareVal(
+          this.data[rightIndex],
+          this.data[findIndex]
+        )
+      ) {
+        findIndex = rightIndex;
+      }
+
+      if (index !== findIndex) {
+        this.swap(index, findIndex);
+        index = findIndex;
+      } else {
+        break;
+      }
+    }
+  }
+
+  swap(index1, index2) {
+    [this.data[index1], this.data[index2]] = [
+      this.data[index2],
+      this.data[index1],
+    ];
+  }
+
+  size() {
+    return this.data.length;
+  }
+}
+
+export function printList(lst: (number | string)[]) {
   let output = "[";
   var i = 0;
   for (i = 0; i < lst.length - 1; i++) {
