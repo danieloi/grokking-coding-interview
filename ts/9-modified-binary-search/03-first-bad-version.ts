@@ -7,6 +7,8 @@ function firstBadVersion(n) {
 
   while (first < last) {
     let mid = first + Math.floor((last - first) / 2);
+    // isBadVersion is a function that is provided by
+    // the quiz platform.
     // @ts-expect-error
     if (isBadVersion(mid)) {
       last = mid;
