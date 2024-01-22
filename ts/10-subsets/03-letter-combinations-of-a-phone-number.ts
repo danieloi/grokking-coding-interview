@@ -1,6 +1,7 @@
 import { printList } from "./utils";
 
-// Use backtrack function to generate all possible combinations
+// Use backtrack function to generate all possible
+// combinations
 function backtrack(
   index,
   path,
@@ -8,14 +9,16 @@ function backtrack(
   letters,
   combinations
 ) {
-  // If the length of path and digits is same,
-  // we have a complete combination
+  // If the length of path and digits is same, we have a
+  // complete combination
   if (path.length === digits.length) {
-    // Join the path list into a string and add it to combinations list
+    // Join the path list into a string and add it to
+    // combinations list
     combinations.push(path.join(""));
     return; // Backtrack
   }
-  // Get the list of letters using the index and digits[index]
+  // Get the list of letters using the index and
+  // digits[index]
   let possibleLetters = letters[digits[index]];
 
   if (possibleLetters) {
@@ -31,16 +34,23 @@ function backtrack(
         letters,
         combinations
       );
-      // Remove the current letter from the path before backtracking to explore other combinations
+      // Remove the current letter from the path before
+      // backtracking to explore other combinations
       path.pop();
     }
   }
 }
 
+
+
+
+
+
 function letterCombinations(digits) {
   let combinations = [];
 
-  // If the input is empty, immediately return an empty answer array
+  // If the input is empty, immediately return an empty
+  // answer array
   if (digits.length == 0) {
     return [];
   }
@@ -58,14 +68,39 @@ function letterCombinations(digits) {
     9: ["w", "x", "y", "z"],
   };
 
-  // Initiate backtracking with an empty path and starting index of 0
+  // Initiate backtracking with an empty path and
+  // starting index of 0
 
   backtrack(0, [], digits, digitsMapping, combinations);
   return combinations;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function main() {
-  const digitsArray = ["23", "73", "426", "78", "925", "2345"];
+  const digitsArray = [
+    "23",
+    "73",
+    "426",
+    "78",
+    "925",
+    "2345",
+  ];
   let counter = 1;
   for (var i = 0; i < digitsArray.length; i++) {
     console.log(

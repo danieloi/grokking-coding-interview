@@ -1,6 +1,7 @@
 import { printList } from "./utils";
 
-// This function will swap characters for every permutation
+// This function will swap characters for every
+// permutation
 function swapChar(word, i, j) {
   let swapIndex = word.split("");
 
