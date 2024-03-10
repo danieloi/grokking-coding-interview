@@ -1,83 +1,52 @@
 // @ts-ignore
-function findMaxKnapsackProfitHelper(
-  capacity,
-  weights,
-  values,
-  n,
-  dp
-) {
-  // Base case
-  if (n === 0 || capacity === 0) {
-    return 0;
+function findMaxKnapsackProfit(capacity, weights, values) {
+  const n = weights.length;
+  const dp = new Array(n + 1)
+    .fill(0)
+    .map(() => new Array(capacity + 1).fill(0));
+
+  for (let i = 1; i <= n; i++) {
+    for (let j = 1; j <= capacity; j++) {
+      // Check if the weight of the current item is less
+      // than the current capacity
+      if (weights[i - 1] <= j) {
+        dp[i][j] = Math.max(
+          values[i - 1] + dp[i - 1][j - weights[i - 1]],
+          dp[i - 1][j]
+        );
+      }
+      // We don't include the item if its weight is
+      // greater than the current capacity
+      else {
+        dp[i][j] = dp[i - 1][j];
+      }
+    }
   }
 
-  // If we have already solved this subproblem, fetch
-  // the result from memory
-  if (dp[n][capacity] !== -1) {
-    return dp[n][capacity];
-  }
-
-  // Otherwise, we solve it and save the result in our
-  // look-up table
-  if (weights[n - 1] <= capacity) {
-    dp[n][capacity] = Math.max(
-      values[n - 1] +
-        findMaxKnapsackProfitHelper(
-          capacity - weights[n - 1],
-          weights,
-          values,
-          n - 1,
-          dp
-        ),
-      findMaxKnapsackProfitHelper(
-        capacity,
-        weights,
-        values,
-        n - 1,
-        dp
-      )
-    );
-    return dp[n][capacity];
-  }
-
-  dp[n][capacity] = findMaxKnapsackProfitHelper(
-    capacity,
-    weights,
-    values,
-    n - 1,
-    dp
-  );
   return dp[n][capacity];
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // @ts-ignore
-function findMaxKnapsackProfit(capacity, weights, values) {
-  const n = weights.length;
-  // Set up the dp table to store solutions to
-  // subproblems
-  const dp = Array.from({ length: n + 1 }, () =>
-    Array(capacity + 1).fill(-1)
-  );
-  return findMaxKnapsackProfitHelper(
-    capacity,
-    weights,
-    values,
-    n,
-    dp
-  );
-}
-
-
-
-
-
-
-
-
-
-
-
-
 // Driver code
 function main() {
   let weights = [
@@ -97,7 +66,7 @@ function main() {
   let capacity = [6, 3, 3, 10, 20];
 
   // Let's uncomment this to see the benefit of using
-  // dynamic programming with memoization
+  // dynamic programming with tabulation
 
   // weights.push([ 63,  55,  47,  83,  61,  82,   6,
   //     34,   9,  38,   6,  69,  17, 50,   7, 100, 101,
