@@ -3,7 +3,8 @@ function canPartitionArray(nums) {
   // find sum of array elements
   let total_sum = nums.reduce((a, b) => a + b, 0);
 
-  // if total_sum is odd, it cannot be partitioned into equal sum subsets
+  // if total_sum is odd, it cannot be partitioned into
+  // equal sum subsets
   if (total_sum % 2 !== 0) {
     return false;
   }
@@ -23,7 +24,8 @@ function canPartitionArray(nums) {
   return dp[subset_sum];
 }
 
-// Driver code
+// Driver code 
+// @ts-ignore
 function main() {
   let input = [
     [3, 1, 1, 2, 2, 1],

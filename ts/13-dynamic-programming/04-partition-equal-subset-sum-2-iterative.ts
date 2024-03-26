@@ -1,29 +1,47 @@
 // @ts-ignore
 function canPartitionArray(nums) {
-  // find sum of array elements
-  let total_sum = nums.reduce((a, b) => a + b, 0);
 
-  // if total_sum is odd, it cannot be partitioned into equal sum subsets
-  if (total_sum % 2 !== 0) {
-    return false;
+  // Calculate sum of array.
+  let arraySum = nums.reduce((acc, num) => acc + num, 0);
+
+  // If total sum is odd, it cannot be partitioned into
+  // equal sum subsets.
+  if (arraySum % 2 !== 0) {
+      return false;
   }
 
-  let subset_sum = Math.floor(total_sum / 2);
-  let n = nums.length;
-  const dp = new Array(n).fill(false);
-  // a subset with a sum of 0 can always be formed by
-  // selecting no elements from the input array
-  dp[0] = true;
+  // Calculate subset sum
+  let subsetSum = Math.floor(arraySum / 2);
+  
+  // Create a lookup table and fill all entries with
+  // FALSE.
+  let dp = new Array(subsetSum + 1);   
+  for (let i = 0; i < dp.length; i++) {
+          dp[i] = new Array(nums.length + 1).fill(false);
+      }
 
-  for (let i = 1; i < n; i++) {
-    for (let j = subset_sum; j >= nums[i]; j--) {
-      dp[j] = dp[j] || dp[j - nums[i]];
-    }
+  // Initialize the first row as TRUE as each array has
+  // a subset whose sum is zero
+  dp[0].fill(true);
+
+  // Fill the lookup table in a bottom-up manner.
+  for (let i = 1; i <= subsetSum; i++) {
+      for (let j = 1; j <= nums.length; j++) {
+      if (nums[j - 1] > i) {
+          dp[i][j] = dp[i][j - 1];
+      } else {
+          dp[i][j] = dp[i - nums[j - 1]][j - 1] || dp[i][j - 1];
+      }
+      }
   }
-  return dp[subset_sum];
+
+  // Return the last index of the matrix, which is our
+  // answer.
+  return dp[subsetSum][nums.length];
 }
 
-// Driver code
+// Driver code 
+// @ts-ignore
 function main() {
   let input = [
     [3, 1, 1, 2, 2, 1],
