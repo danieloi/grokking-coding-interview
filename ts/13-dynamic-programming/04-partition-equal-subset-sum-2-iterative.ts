@@ -1,24 +1,23 @@
 // @ts-ignore
 function canPartitionArray(nums) {
-
   // Calculate sum of array.
   let arraySum = nums.reduce((acc, num) => acc + num, 0);
 
   // If total sum is odd, it cannot be partitioned into
   // equal sum subsets.
   if (arraySum % 2 !== 0) {
-      return false;
+    return false;
   }
 
   // Calculate subset sum
   let subsetSum = Math.floor(arraySum / 2);
-  
+
   // Create a lookup table and fill all entries with
   // FALSE.
-  let dp = new Array(subsetSum + 1);   
+  let dp = new Array(subsetSum + 1);
   for (let i = 0; i < dp.length; i++) {
-          dp[i] = new Array(nums.length + 1).fill(false);
-      }
+    dp[i] = new Array(nums.length + 1).fill(false);
+  }
 
   // Initialize the first row as TRUE as each array has
   // a subset whose sum is zero
@@ -26,13 +25,14 @@ function canPartitionArray(nums) {
 
   // Fill the lookup table in a bottom-up manner.
   for (let i = 1; i <= subsetSum; i++) {
-      for (let j = 1; j <= nums.length; j++) {
+    for (let j = 1; j <= nums.length; j++) {
       if (nums[j - 1] > i) {
-          dp[i][j] = dp[i][j - 1];
+        dp[i][j] = dp[i][j - 1];
       } else {
-          dp[i][j] = dp[i - nums[j - 1]][j - 1] || dp[i][j - 1];
+        dp[i][j] =
+          dp[i - nums[j - 1]][j - 1] || dp[i][j - 1];
       }
-      }
+    }
   }
 
   // Return the last index of the matrix, which is our
@@ -40,8 +40,24 @@ function canPartitionArray(nums) {
   return dp[subsetSum][nums.length];
 }
 
-// Driver code 
-// @ts-ignore
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Driver code @ts-ignore
 function main() {
   let input = [
     [3, 1, 1, 2, 2, 1],
