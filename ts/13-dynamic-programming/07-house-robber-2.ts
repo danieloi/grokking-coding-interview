@@ -19,6 +19,30 @@ function houseRobber(money) {
   );
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function houseRobberHelper(money) {
   // Create a lookup array with the same length as the
   // input list, filled with 0s
@@ -37,12 +61,35 @@ function houseRobberHelper(money) {
     lookupArray[i] = Math.max(
       money[i - 1] + lookupArray[i - 2],
       lookupArray[i - 1]
-    );
+    ); 
   }
 
   // Return the last element in the lookup array
   return lookupArray[money.length];
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Driver code
 function main() {

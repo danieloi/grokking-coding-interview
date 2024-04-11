@@ -25,11 +25,13 @@ function maxProduct(nums) {
       maxSoFar * curr,
       minSoFar * curr
     );
+
     minSoFar = Math.min(
       curr,
       maxSoFar * curr,
       minSoFar * curr
     );
+
     maxSoFar = tempMaxSoFar;
 
     // Update result with the maximum of maxSoFar and
@@ -40,6 +42,17 @@ function maxProduct(nums) {
   // Return the final result
   return result;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 // Driver code
 function main() {

@@ -50,6 +50,23 @@ function updateMatrix(mat) {
   return mat;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Driver code
 const inputBits = [
   [
