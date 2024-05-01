@@ -1,3 +1,5 @@
+
+
 // Function to check if a string can be broken down into
 // words from the dictionary
 function wordBreak(s, wordDict) {
@@ -43,9 +45,7 @@ function wordBreak(s, wordDict) {
 
 
 
-
-
-
+// Driver code @ts-ignore
 function main() {
   const s = [
     "vegancookbook",
@@ -104,7 +104,7 @@ function main() {
   ];
 
   console.log(
-    "The list of words we can use to break down the strings are:\n\n"
+    "The list of words we can use to break down the strings are:\n"
   );
   console.log("[" + wordDict.join(", ") + "]\n");
 
@@ -112,9 +112,18 @@ function main() {
 
   for (let i = 0; i < s.length; ++i) {
     console.log(`Test Case #${i + 1}\n\nInput: '${s[i]}'`);
+    printPossibleCombinations(s[i], wordDict);
     console.log("Output: " + wordBreak(s[i], wordDict));
     console.log("-".repeat(100));
   }
-} 
+}
+
+function printPossibleCombinations(s, wordDict) {
+  console.log(
+    `Possible combinations of words from the string '${s}' are:\n`
+  );
+  console.log(wordDict.join(", "));
+  console.log("\n");
+}
 
 main();
