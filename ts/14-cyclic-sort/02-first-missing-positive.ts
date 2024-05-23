@@ -1,5 +1,4 @@
 
-
 // difference between this and previous problem
 // is the numbers here start from 1 not 0
 function smallestMissingPositiveInteger(nums) {

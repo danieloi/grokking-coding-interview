@@ -1,3 +1,4 @@
+
 export function firstKMissingNumbers(arr, k) {
   const arrLength = arr.length;
 
@@ -53,6 +54,19 @@ export function firstKMissingNumbers(arr, k) {
 
   return missingNumbers;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // expected [6,7,8,9,10,11]
 console.log(firstKMissingNumbers([1, 2, 3, 4, 5], 6));

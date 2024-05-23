@@ -1,3 +1,4 @@
+
 function findCorruptPair(nums) {
   let missing: number | null = null;
   let duplicated: number | null = null;

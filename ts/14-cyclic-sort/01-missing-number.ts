@@ -1,3 +1,5 @@
+
+
 function findMissingNumber(nums) {
   const numsLength = nums.length;
   // initialize the cursor
