@@ -1,6 +1,7 @@
 import { Queue, print2DArray } from "./utils";
 
-// Default Dict class that returns a dictionary like object.
+// Default Dict class that returns a dictionary like
+// object.
 class DefaultDict {
   constructor(defaultInit) {
     return new Proxy(
@@ -18,8 +19,8 @@ class DefaultDict {
   }
 }
 
-// helper function that creates an iterator that will aggregate
-// two arrays
+// helper function that creates an iterator that will
+// aggregate two arrays
 function zip(array1, array2) {
   let zipped: [string, string][] = [];
   for (let i = 0; i < array1.length; i++) {
@@ -33,6 +34,8 @@ function zip(array1, array2) {
 
 function alienOrder(words) {
   let adjList = new DefaultDict(Set);
+
+  // 'counts' stores the number of unique letters
   let counts = {};
   words.forEach((word) => {
     for (let i = 0; i < word.length; i++) {
@@ -40,6 +43,12 @@ function alienOrder(words) {
     }
   });
 
+  // Step 1: We need to populate adjList and counts. 
+  // For each pair of adjacent words: 
+  // 'broken' will be true when in any position 
+  // the letter in both the words are not same. 
+  // 'exit' will be true when the length of word1 
+  // is greater than that of word2.
   let broken = false;
   let exit = false;
   zip(words, words.slice(1)).forEach((w) => {
@@ -50,6 +59,7 @@ function alienOrder(words) {
       let c = t[x][0];
       let d = t[x][1];
       if (c != d) {
+        //The characters are not the same
         if (adjList[c].has(d) == false) {
           adjList[c].add(d);
           counts[d] += 1;
@@ -60,6 +70,8 @@ function alienOrder(words) {
     }
 
     if (broken == false) {
+      // Check that second word isn't a prefix of first
+      // word.
       if (word2.length < word1.length) {
         exit = true;
         return "";
@@ -70,6 +82,9 @@ function alienOrder(words) {
   if (exit) {
     return "";
   }
+
+  // Step 2: We need to repeatedly pick off nodes with
+  // an indegree of 0.
   let result: string[] = [];
   let sourcesQueue = new Queue();
   for (let c in counts) {
@@ -89,11 +104,32 @@ function alienOrder(words) {
     });
   }
 
+  // If not all letters are in result, that means there
+  // was a cycle and so no valid ordering. Return "".
   if (result.length < Object.keys(counts).length) {
     return "";
   }
+
+  // Otherwise, convert the ordering we found into a
+  // string and return it.
   return result.join("");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Driver code
 function main() {
