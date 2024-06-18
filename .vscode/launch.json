@@ -5,8 +5,13 @@
       "name": "ts-node",
       "type": "node",
       "request": "launch",
-      "args": ["${relativeFile}"],
-      "runtimeArgs": ["-r", "ts-node/register/transpile-only"],
+      "args": [
+        "${relativeFile}"
+      ],
+      "runtimeArgs": [
+        "-r",
+        "ts-node/register/transpile-only"
+      ],
       "cwd": "${workspaceRoot}",
       "internalConsoleOptions": "openOnSessionStart",
       "resolveSourceMapLocations": [
@@ -14,6 +19,13 @@
         "!**/node_modules/**"
       ],
       "runtimeExecutable": "/Users/olumayowadaniel/.nvm/versions/node/v18.12.1/bin/node"
+    },
+    {
+      "name": "Python: File",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "justMyCode": true
     }
   ]
 }
