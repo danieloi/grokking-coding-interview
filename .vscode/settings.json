@@ -3,13 +3,13 @@
   "rewrap.wrappingColumn": 56,
   "workbench.statusBar.visible": false,
   "editor.lineNumbers": "off",
-  "editor.fontSize": 18,
+  "editor.fontSize": 38,
   "editor.formatOnSave": false,
   "gitlens.currentLine.enabled": false,
   "gitlens.codeLens.authors.enabled": false,
   "gitlens.codeLens.recentChange.enabled": false,
   "scm.diffDecorations": "none",
   "window.zoomLevel": 0,
-  "zenMode.centerLayout": true,
-  "workbench.editor.showTabs": "multiple"
+	"zenMode.centerLayout": true,
+  "workbench.editor.showTabs": "none"
 }
