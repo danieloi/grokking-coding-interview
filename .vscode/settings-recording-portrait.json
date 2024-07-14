@@ -11,5 +11,8 @@
   "scm.diffDecorations": "none",
   "window.zoomLevel": 0,
 	"zenMode.centerLayout": true,
-  "workbench.editor.showTabs": "none"
+  "workbench.editor.showTabs": "none",
+  "editor.occurrencesHighlight": "off",
+  "editor.selectionHighlight": false,
+  "editor.hover.enabled": false
 }
