@@ -1,14 +1,14 @@
 
 
-export function printMatrix(mat) {
-	for (var i = 0; i < mat.length; i++) {
-		for (var j = 0; j < mat[0].length; j++) {
-			if (j === 0) {
-				process.stdout.write("\t" + mat[i][j] + "  ");
-			} else {
-				process.stdout.write(mat[i][j] + "  ");
-			}
-		}
-		console.log();
+export function printMatrix(matrix) {
+	console.log("[");
+	for (let i = 0; i < matrix.length; i++) {
+	  console.log("  [" + matrix[i].join(", ") + "]");
 	}
+	console.log("]");
+  }
+  
+
+  export function arrayToString(arr) {
+    return "[" + arr.join(", ") + "]";
 }
