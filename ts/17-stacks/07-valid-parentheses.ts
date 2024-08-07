@@ -14,7 +14,8 @@ function isValid(s: string) {
     // if the current value is an opening parenthesis
     if (openingBraces.has(val)) {
       // push onto stack
-      stack.push(val as OpeningBrace);
+      // @ts-ignore
+      stack.push(val);
     } else {
       // we're dealing with a closing brace
 
@@ -27,7 +28,8 @@ function isValid(s: string) {
       let topOfStack = stack[stack.length - 1]!;
 
       if (
-        matchesTopOfStack(val as ClosingBrace, topOfStack)
+        // @ts-ignore
+        matchesTopOfStack(val, topOfStack)
       ) {
         // pop the top of the stack
         stack.pop();
