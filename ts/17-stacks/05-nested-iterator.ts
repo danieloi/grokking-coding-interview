@@ -1,16 +1,14 @@
-// This function inializes the stack using the given
-
 import NestedInteger from "./05-nested-integer";
 
-// nestedList list
 class NestedIterator {
   stack: NestedInteger[];
+  
   constructor(nestedList: NestedInteger[]) {
     this.stack = [...nestedList.reverse()];
   }
 
-  // hasNext() will return true if there are still some
-  // integers in the stack (that has nestedList
+  // hasNext() will return true if there are still
+  // some integers in the stack (that has nestedList
   // elements) and, otherwise, will return false.
   hasNext = function () {
     // Iterate in a stack until stack is not empty
@@ -24,8 +22,8 @@ class NestedIterator {
       // list of integers Pop the list from the stack
       // and save it in the topList
       let topList = this.stack.pop().getList();
-      // Save the length of the topList in i and iterate
-      // in the list
+      // Save the length of the topList in i and
+      // iterate in the list
       let i = topList.length - 1;
       while (i >= 0) {
         // push the values of the nested list into the
