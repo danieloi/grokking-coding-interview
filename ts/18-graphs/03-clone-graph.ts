@@ -3,72 +3,95 @@ import {
   create2DList,
   printGraph,
   Node,
-} from "./03-utils.js";
+} from "./03-utils";
+
+
+
+
+
+
+
+
+
+
+
 
 function cloneHelper(
-  root: Node | null,
-  nodesCompleted: Map<Node, Node>
+  root: Node,
+  clonedNodesMap: Map<Node, Node>
 ) {
-  // If the root node is null, return null
-  if (root === null) {
-    return null;
-  }
-
-  // Create a new Node with the same data as the root
-  // node
+  // Make a clone by creating a new Node with the same
+  // data as the root node
   let clonedNode = new Node(root.data);
-  
+
   // Add the root node and its clone to the
-  // nodesCompleted map
-  nodesCompleted.set(root, clonedNode);
+  // clonedNodesMap map
+  clonedNodesMap.set(root, clonedNode);
 
   // Iterate through the neighbors of the root node
-  for (let p of root.neighbors) {
-    // Retrieve the value of key p in the nodesCompleted
-    // map. If it exists, assign the corresponding
-    // cloned node to x. This checks if neighbor node p
-    // has already been cloned.
-    let x = nodesCompleted.get(p);
+  for (let neighbor of root.neighbors) {
+    // This checks if neighbor node has already
+    // been cloned.
+    let clonedNodeFromMap = clonedNodesMap.get(neighbor);
 
     // If the neighbor is not cloned yet, recursively
     // clone it
-    if (!x) {
-      clonedNode.neighbors.push(
-        cloneHelper(p, nodesCompleted)!
+    if (!clonedNodeFromMap) {
+      const clonedNeighbor = cloneHelper(
+        neighbor,
+        clonedNodesMap
       );
+      clonedNode.neighbors.push(clonedNeighbor);
     }
 
-    // If the neighbor is already cloned, add the cloned
-    // neighbor to the new node's neighbors
+    // If the neighbor was already cloned, add the
+    // cloned neighbor (not the original one) to
+    // the new node's neighbor list
     else {
-      clonedNode.neighbors.push(x);
+      clonedNode.neighbors.push(clonedNodeFromMap);
     }
   }
 
   return clonedNode;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function clone(root: Node | null) {
+  // If the root node is null, return null
+  if (root === null) {
+    return null;
+  }
+
   // Initialize an empty map to keep track of cloned
-  // nodes
-  let nodesCompleted = new Map();
+  // nodes. Nodes must have been visited before they
+  // can be cloned therefore every node that has a
+  // clone has been visited.
+  let clonedNodesMap = new Map();
 
   // Call the recursive function to clone the graph
   // starting from the root node
-  return cloneHelper(root, nodesCompleted);
+  return cloneHelper(root, clonedNodesMap);
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
