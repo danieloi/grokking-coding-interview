@@ -1,3 +1,4 @@
+
 function validTreeHelper(
   node: number,
   adjacency: number[][],
@@ -16,7 +17,10 @@ function validTreeHelper(
   }
 }
 
-function validTree(n: number, edges: [number, number][]) {
+function validTree(
+  n: number, 
+  edges: [number, number][]
+) {
   // Check if n - 1 edges exist
   if (edges.length !== n - 1) {
     return false;

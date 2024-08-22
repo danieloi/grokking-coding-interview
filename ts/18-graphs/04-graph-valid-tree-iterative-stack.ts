@@ -1,13 +1,20 @@
 
 
-function validTree(n: number, edges: [number, number][]) {
+// @ts-ignore
+function validTree(
+  n: number,
+  edges: [number, number][]
+) {
   // Check if n - 1 edges exist
   if (edges.length !== n - 1) {
     return false;
   }
 
   // Create an adjacency list
-  const adjacency = Array.from({ length: n }, () => [] as number[]);
+  const adjacency = Array.from(
+    { length: n },
+    () => [] as number[]
+  );
 
   // Populate adjacency with all the connected nodes
   for (const [x, y] of edges) {
@@ -61,7 +68,11 @@ function validTree(n: number, edges: [number, number][]) {
 
 
 
+
+
+
 // Driver code
+// @ts-ignore
 function main() {
   const n = [3, 4, 5, 5, 6];
   const edges: [number, number][][] = [
