@@ -1,9 +1,8 @@
 {
   "compile-hero.disable-compile-files-on-did-save-code": true,
-  "rewrap.wrappingColumn": 54,
-  "workbench.statusBar.visible": false,
+  "rewrap.wrappingColumn": 56,
   "editor.lineNumbers": "off",
-  "editor.fontSize": 40,
+  "editor.fontSize": 16,
   "editor.formatOnSave": false,
   "gitlens.currentLine.enabled": false,
   "gitlens.codeLens.authors.enabled": false,
@@ -11,8 +10,5 @@
   "scm.diffDecorations": "none",
   "window.zoomLevel": 0,
   "zenMode.centerLayout": true,
-  "workbench.editor.showTabs": "none",
-  "editor.occurrencesHighlight": "off",
-  "editor.selectionHighlight": false,
-  "editor.hover.enabled": false
+  "workbench.editor.showTabs": "multiple"
 }

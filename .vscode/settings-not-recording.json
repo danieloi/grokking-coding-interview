@@ -1,7 +1,6 @@
 {
   "compile-hero.disable-compile-files-on-did-save-code": true,
   "rewrap.wrappingColumn": 56,
-  "workbench.statusBar.visible": false,
   "editor.lineNumbers": "off",
   "editor.fontSize": 16,
   "editor.formatOnSave": false,
