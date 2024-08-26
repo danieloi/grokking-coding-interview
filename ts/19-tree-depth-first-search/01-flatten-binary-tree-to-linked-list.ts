@@ -1,33 +1,49 @@
-import { BinaryTree, displayTree, TreeNode } from "./01-utils";
+import {
+  BinaryTree,
+  displayTree,
+  TreeNode,
+} from "./01-utils";
+
+
+
+
+
+
 
 function flattenTree(root) {
   if (root == null) return;
 
+  // start from the root
   let current = root;
+
+  //traverse the whole tree
   while (current != null) {
     if (current.left != null) {
-      let last = current.left;
-      while (last.right != null) {
-        last = last.right;
+      // there's a left child for the current node
+      let deepestRight = current.left;
+      // find the rightmost node of the left subtree
+      // i.e. the rightmost leaf of the left subtree
+      while (deepestRight.right != null) {
+        deepestRight = deepestRight.right;
       }
 
-      last.right = current.right;
+      // remember the previous while loop made it so
+      // there's nothing in deepestRight.right so we
+      // can move the right subtree of the current
+      // node there without overwriting anything
+      deepestRight.right = current.right;
+      // move the left subtree of the current node to
+      // the right
       current.right = current.left;
+      // remove the left subtree of the current node
       current.left = null;
     }
+
+    // update the current node to the right
     current = current.right;
   }
   return root;
 }
-
-
-
-
-
-
-
-
-
 
 
 
