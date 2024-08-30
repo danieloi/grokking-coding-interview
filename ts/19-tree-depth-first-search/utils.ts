@@ -11,12 +11,12 @@ export class TreeNode {
 
 export class BinaryTree {
   root: TreeNode | null;
-  constructor(ListOfNodes: TreeNode[]) {
+  constructor(ListOfNodes: (TreeNode | null)[]) {
     this.root = this.createBinaryTree(ListOfNodes);
   }
 
-  createBinaryTree(ListOfNodes: TreeNode[]) {
-    if (ListOfNodes.length === 0) {
+  createBinaryTree(ListOfNodes: (TreeNode | null)[]) {
+    if (ListOfNodes.length === 0 || ListOfNodes[0] === null) {
       return null;
     }
 
@@ -38,7 +38,7 @@ export class BinaryTree {
       // child of the current node, and add it to the
       // queue
       if (ListOfNodes[i] !== null) {
-        curr.left = new TreeNode(ListOfNodes[i].data);
+        curr.left = new TreeNode(ListOfNodes[i]!.data);
         queue.push(curr.left);
       }
 
@@ -53,7 +53,7 @@ export class BinaryTree {
         i < ListOfNodes.length &&
         ListOfNodes[i] !== null
       ) {
-        curr.right = new TreeNode(ListOfNodes[i].data);
+        curr.right = new TreeNode(ListOfNodes[i]!.data);
         queue.push(curr.right);
       }
 
