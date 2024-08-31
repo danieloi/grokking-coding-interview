@@ -334,6 +334,21 @@ export function displayTree(root: TreeNode | null) {
   }
 }
 
+// helper function
+export function printArray(arr) {
+  let result = "[";
+  for (let i = 0; i < arr.length; i++) {
+    if (typeof arr[i] == "object") {
+      result += printArray(arr[i]);
+    } else {
+      result += `'${arr[i]}'`;
+    }
+    if (i != arr.length - 1) result += ", ";
+  }
+  return (result += "]");
+}
+
+
 // print all project function definitions and calls
 // including the hidden ones
 const fs = require("fs");
